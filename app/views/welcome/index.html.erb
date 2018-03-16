@@ -11,16 +11,18 @@
 
   <p>
     <%= form.label "Password" %><br>
-    <%= form.text_field :password %>
+    <%= form.password_field :password %>
   </p>
 
   <p>
     <%= form.submit "Log in" %>
   </p>
   <% end %>
-
 <p>
-  <p>Don't have an account?</p>
+  <p>
+  <%= link_to "Forgot password?", '#' %>
+  </p>
+  Don't have an account?
 <%= link_to 'Signup', signup_path %>
 </p>
 <% else %>
