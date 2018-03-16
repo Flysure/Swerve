@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App!"
       redirect_to root_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end

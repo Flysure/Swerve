@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <p>42069</p>
     <title>PotholeRadar</title>
     <%= csrf_meta_tags %>
 
@@ -13,14 +12,8 @@
           <p><%= message %></p>
     <% end %>
   </h3>
-  <% if logged_in? %>
-      <%= link_to "Log out", logout_path, method: :delete %>
-  <% else %>
-      <li><%= link_to "Log in", login_path %></li>
-  <% end %>
-  <h1>
-    USER ID: <%= session[:user_id] %>
-  </h1>
+  
+
   <body>
     <%= yield %>
   </body>
