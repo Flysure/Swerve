@@ -8,7 +8,8 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
-# Use bootstrap for styling 
+gem 'gmaps4rails'
+# Use bootstrap for styling
 gem 'bootstrap-sass', '3.3.7'
 # Use bcrypt for hashing password and authenticating user
 gem 'bcrypt', '3.1.11'
