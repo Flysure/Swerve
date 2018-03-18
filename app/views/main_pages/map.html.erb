@@ -1,25 +1,34 @@
 <script src="//maps.google.com/maps/api/js?key=AIzaSyAWx_3Rjh9szUJCO96Z2Cxx6iK8N0nf9I4"></script>
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
 
-
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
-  handler.buildMap({ internal: {id: 'map'} }, function(){
-  // be aware chrome >= 50 requires https for geolocation to work
-  if(navigator.geolocation)
-    navigator.geolocation.getCurrentPosition(displayOnMap);
-});
+  handler.buildMap({
+    internal: {
+      id: 'map'
+    }
+  }, function () {
+
+    // be aware chrome >= 50 requires https for geolocation to work
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(displayOnMap);}
+
+      google.maps.event.addListener(handler.getMap(), 'click', function(event){
+        var marker = handler.addMarker({lat: event.latLng.lat(), lng: event.latLng.lng()});
+      });
+    });
+
+  function validateMarker(position){
 
 
-  function displayOnMap(position){
-  var marker = handler.addMarker({
-    lat: position.coords.latitude,
-    lng: position.coords.longitude
-  });
-  handler.map.centerOn(marker);
-};
+  }
+
+  function displayOnMap(position) {
+    var marker = handler.addMarker({lat: position.coords.latitude, lng: position.coords.longitude});
+    handler.map.centerOn(marker);
+  };
 </script>
