@@ -17,21 +17,35 @@
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(displayOnMap);}
 
-
-        var infoWindow = new google.maps.InfoWindow({
-          content: "contentString"
-        });
-
       google.maps.event.addListener(handler.getMap(), 'click', function(event){
-        var marker = handler.addMarker(
-          {
-           lat: event.latLng.lat(),
-           lng: event.latLng.lng(),
-           infowindow: "<p> Would you like to mark this pothole? </p>"
-         });
+        <% if logged_in? %>
+        if (confirm("Are you sure you'd like to mark this pothole here?")){
+          var marker = handler.addMarker(
+            {
+             lat: event.latLng.lat(),
+             lng: event.latLng.lng(),
+           }, {animation: google.maps.Animation.DROP});
+           $.ajax({
+             url: "/potholes",
+             type: "POST",
+             dataType: "json",
+             data: {
+                  user_id: <%=current_user.id %>,
+                  latitude: event.latLng.lat(),
+                  longitude: event.latLng.lng()
+             },
+             complete: function(){
+                  console.log('Congrats');
+             }
+
+           });
+         }
+        <% else %>
+        alert("Log in to mark");
+        <% end %>
+
       });
     });
-
 
   function displayOnMap(position) {
     var marker = handler.addMarker({lat: position.coords.latitude, lng: position.coords.longitude});

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post '/signup',  to: 'users#create'
   get '/map', to: 'main_pages#map'
   resources :users
+  resources :potholes,          only: [:create, :destroy]
 end
