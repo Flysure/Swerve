@@ -27,19 +27,17 @@
     <% if logged_in? %>
     if (confirmMarker()) {
       postData(<%=current_user.id %>,event.latLng.lat(), event.latLng.lng());
-      var html = "<p> created by " + "<%= current_user.username %> " + "</p>";
-      createMarker(event.latLng.lat(), event.latLng.lng(), html);
+      createMarker(event.latLng.lat(), event.latLng.lng());
     }
     <% end %>
   }
 
 
 
-  function createMarker(lat, lng, name){
+  function createMarker(lat, lng){
     var marker = handler.addMarker({
       lat: lat,
       lng: lng
-      infowindow: name
     }, {animation: google.maps.Animation.DROP});
   }
 
