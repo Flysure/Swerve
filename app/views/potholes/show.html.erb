@@ -1,0 +1,6 @@
+<h4>pothole initially marked by: @<%= @pothole.user.username %></h4>
+<p>marked at: <%= @pothole.created_at.localtime %></p>
+<p>at exact location: <%= @pothole.latitude.round(3) %>, <%= @pothole.longitude.round(3) %></p>
+<p>comments: <%= @pothole.description %></p>
+<p>severity level: <%= @pothole.severity %></p>
+<%= link_to 'back', potholes_path %>
