@@ -1,6 +1,4 @@
-<h1>Pothole Tracker</h1>
-
-<p>This will be a welcome landing page for the users to navigate to the map, signup, and login pages</p>
+<h1>SWERVE - A Pothole Tracker System</h1>
 
 <% if !logged_in? %>
 <%= form_with scope: :session,url: login_path, local: true do |form| %>
@@ -23,7 +21,7 @@
   <%= link_to "Forgot password?", '#' %>
   </p>
   Don't have an account?
-<%= link_to 'Signup', signup_path %>
+<%= link_to 'Sign up', signup_path %>
 </p>
 <% else %>
     <%= link_to "Log out", logout_path, method: :delete %>

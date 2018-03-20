@@ -11,7 +11,9 @@ class PotholesController < ApplicationController
       marker.lat pothole.latitude
       marker.lng pothole.longitude
       marker.infowindow render_to_string(:partial => "/potholes/my_template", :locals => { :@pothole => pothole})
-      ##marker.infowindow "<b>Pothole created by #{pothole.user.username}</b>"
     end
+  end
+  def show
+    @pothole = Pothole.find(params[:id])
   end
 end
