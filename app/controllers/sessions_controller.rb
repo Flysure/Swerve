@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       flash[:success] = "You're logged in!"
-      redirect_to map_path
+      redirect_to potholes_path
     else
       flash.now[:error] = "Invalid email/password combination"
       render 'new'

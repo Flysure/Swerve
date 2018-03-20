@@ -1,7 +1,7 @@
+
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
-
 <script type="text/javascript">
 
   handler = Gmaps.build('Google');
@@ -25,20 +25,27 @@
 
   function handleClickEvent(event){
     <% if logged_in? %>
-
     if (confirmMarker()) {
-      createMarker(event.latLng.lat(), event.latLng.lng());
       postData(<%=current_user.id %>,event.latLng.lat(), event.latLng.lng());
+      var name = infoWindowText();
+      createMarker(event.latLng.lat(), event.latLng.lng(), name);
     }
     <% else %>
       alert("Log in to mark");
     <% end %>
   }
 
-  function createMarker(lat, lng){
+  function infoWindowText(){
+    var html = "<p> created by " + "<%= @user.first_name %> " +
+    "<%= @user.last_name %>" + "</p>";
+    return html;
+  }
+
+  function createMarker(lat, lng, name){
     var marker = handler.addMarker({
       lat: lat,
-      lng: lng
+      lng: lng,
+      infowindow: name
     }, {animation: google.maps.Animation.DROP});
   }
 

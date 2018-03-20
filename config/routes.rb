@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
-  get '/map', to: 'main_pages#map'
   resources :users
-  resources :potholes,          only: [:create, :destroy]
+  resources :potholes,          only: [:create, :destroy, :index]
 end
