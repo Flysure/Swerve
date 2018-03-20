@@ -11,6 +11,5 @@ class PotholesController < ApplicationController
       marker.lat pothole.latitude
       marker.lng pothole.longitude
     end
-    @user = Pothole.last.user;
   end
 end
