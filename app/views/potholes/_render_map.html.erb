@@ -1,5 +1,9 @@
 <script type="text/javascript">
 
+
+
+
+
   handler = Gmaps.build('Google');
 
   handler.buildMap({
@@ -22,6 +26,7 @@
   function handleClickEvent(event){
     <% if logged_in? %>
     if (confirmMarker()) {
+
       postData(<%=current_user.id %>,event.latLng.lat(), event.latLng.lng());
       createMarker(event.latLng.lat(), event.latLng.lng());
     }
@@ -53,7 +58,14 @@
   }
 
   function confirmMarker(){
-    return confirm("Are you sure you'd like to mark this pothole here?");
+
+      $.magnificPopup.open({
+           items: {
+               src: '#test-popup'
+           },
+           type: 'inline'
+       });
+    
   }
 
 

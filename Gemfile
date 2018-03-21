@@ -11,6 +11,7 @@ gem 'rails', '~> 5.1.5'
 gem 'jquery-rails'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'magnific-popup-rails', '~> 1.1.0'
 # Use bootstrap for styling
 gem 'bootstrap-sass', '3.3.7'
 # Use bcrypt for hashing password and authenticating user

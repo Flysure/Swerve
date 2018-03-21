@@ -1,0 +1,15 @@
+<%= form_for :anything, url: potholes_path do |form| %>
+<h3>Create a new pothole</h3>
+<br>
+<p>
+  <%= form.label "Comments" %><br>
+  <%= form.text_field :comment %>
+</p>
+
+<p>
+  <%= form.label "Severity" %><br>
+  <%= form.number_field :severity %>
+</p>
+
+  <%= form.submit "Submit", class: "btn btn-primary" %>
+<% end %>
