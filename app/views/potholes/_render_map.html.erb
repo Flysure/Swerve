@@ -1,0 +1,64 @@
+<script type="text/javascript">
+
+  handler = Gmaps.build('Google');
+
+  handler.buildMap({
+    internal: {
+      id: 'map'
+    }
+  }, function () {
+
+    // be aware chrome >= 50 requires https for geolocation to work
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(displayOnMap);
+    }
+
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    google.maps.event.addListener(handler.getMap(), 'click', function (event) {
+      handleClickEvent(event);
+    });
+  });
+
+  function handleClickEvent(event){
+    <% if logged_in? %>
+    if (confirmMarker()) {
+      postData(<%=current_user.id %>,event.latLng.lat(), event.latLng.lng());
+      createMarker(event.latLng.lat(), event.latLng.lng());
+    }
+    <% else %>
+      alert("Must be logged in to mark")
+    <% end %>
+  }
+
+
+
+  function createMarker(lat, lng){
+    var marker = handler.addMarker({
+      lat: lat,
+      lng: lng
+    }, {animation: google.maps.Animation.DROP});
+  }
+
+  function postData(user, lat, lng){
+    $.ajax({
+      url: "/potholes",
+      type: "POST",
+      dataType: "json",
+      data: {
+        user_id: user,
+        latitude: lat,
+        longitude: lng
+      }
+    });
+  }
+
+  function confirmMarker(){
+    return confirm("Are you sure you'd like to mark this pothole here?");
+  }
+
+
+  function displayOnMap(position) {
+    var marker = handler.addMarker({lat: position.coords.latitude, lng: position.coords.longitude});
+    handler.map.centerOn(marker);
+  };
+  </script>
