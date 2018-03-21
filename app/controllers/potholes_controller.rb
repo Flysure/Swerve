@@ -8,6 +8,7 @@ class PotholesController < ApplicationController
       description:params[:pothole][:comment],
       severity:params[:pothole][:severity])
     @pothole.save
+    redirect_back(fallback_location: potholes_path)
   end
   def index
     @potholes = Pothole.all
