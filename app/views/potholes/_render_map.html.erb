@@ -25,11 +25,8 @@
 
   function handleClickEvent(event){
     <% if logged_in? %>
-    if (confirmMarker()) {
-
-      postData(<%=current_user.id %>,event.latLng.lat(), event.latLng.lng());
+      confirmMarker(event.latLng.lat(), event.latLng.lng(), <%=current_user.id %>)
       createMarker(event.latLng.lat(), event.latLng.lng());
-    }
     <% else %>
       alert("Must be logged in to mark")
     <% end %>
@@ -57,16 +54,27 @@
     });
   }
 
-  function confirmMarker(){
-
+  function confirmMarker(lat, lng, user){
+    var data = [
+      {
+        potholeLat: lat,
+        potHoleLng: lng,
+      }
+    ]
       $.magnificPopup.open({
            items: {
-               src: '#test-popup'
+               src: '#test-popup',
+               type: 'inline'
            },
-           type: 'inline'
+           callbacks: {
+             change: function() {
+               this.content[0].children[0][2].value = lat;
+               this.content[0].children[0][3].value = lng;
+               this.content[0].children[0][4].value = user;
+              }
+           }
        });
-    
-  }
+     }
 
 
   function displayOnMap(position) {

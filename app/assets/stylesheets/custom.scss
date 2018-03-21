@@ -31,3 +31,28 @@ section {
   max-width: 500px;
   margin: 20px auto;
 }
+
+.mfp-close {
+  width: 40% !important;
+  height: 44px;
+  line-height: 44px;
+
+  position: relative !important;
+  right: 0;
+  top: 0;
+  text-decoration: none;
+  text-align: center;
+  padding: 0 0 18px 10px;
+  font-style: normal;
+  font-size: 28px;
+  font-family: Arial, Baskerville, monospace;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+
+  &:active {
+    top: 1px;
+  }
+}

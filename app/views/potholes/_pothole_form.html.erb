@@ -1,6 +1,19 @@
-<%= form_for :anything, url: potholes_path do |form| %>
+<%= form_for :pothole, url: potholes_path do |form| %>
 <h3>Create a new pothole</h3>
 <br>
+
+<p>
+  <%= form.label "Lat" %><br>
+  <%= form.number_field :latitude, step: :any %>
+</p>
+<p>
+  <%= form.label "Lng" %><br>
+  <%= form.number_field :longitude, step: :any %>
+</p>
+<p>
+  <%= form.label "User id" %><br>
+  <%= form.number_field :user_id %>
+</p>
 <p>
   <%= form.label "Comments" %><br>
   <%= form.text_field :comment %>
@@ -11,5 +24,6 @@
   <%= form.number_field :severity %>
 </p>
 
-  <%= form.submit "Submit", class: "btn btn-primary" %>
+<%= form.submit "Submit", class: "mfp-close" %>
+
 <% end %>
