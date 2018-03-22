@@ -1,9 +1,6 @@
 <script type="text/javascript">
 
 
-
-
-
   handler = Gmaps.build('Google');
 
   handler.buildMap({
@@ -24,9 +21,13 @@
   });
 
   function handleClickEvent(event){
+
     <% if logged_in? %>
-      confirmMarker(event.latLng.lat(), event.latLng.lng(), <%=current_user.id %>)
-      createMarker(event.latLng.lat(), event.latLng.lng());
+      confirmMarker(event.latLng.lat(), event.latLng.lng(), <%=current_user.id %>);
+      document.getElementsByClassName('mfp-close')[0].onclick = function() {
+          createMarker(event.latLng.lat(), event.latLng.lng());
+        };
+
     <% else %>
       alert("Must be logged in to mark")
     <% end %>
@@ -37,30 +38,16 @@
   function createMarker(lat, lng){
     var marker = handler.addMarker({
       lat: lat,
-      lng: lng
+      lng: lng,
+      infowindow: "Hello"
     }, {animation: google.maps.Animation.DROP});
   }
 
-  function postData(user, lat, lng){
-    $.ajax({
-      url: "/potholes",
-      type: "POST",
-      dataType: "json",
-      data: {
-        user_id: user,
-        latitude: lat,
-        longitude: lng
-      }
-    });
-  }
+
 
   function confirmMarker(lat, lng, user){
-    var data = [
-      {
-        potholeLat: lat,
-        potHoleLng: lng,
-      }
-    ]
+      var comment;
+      var severity;
       $.magnificPopup.open({
            items: {
                src: '#test-popup',
@@ -71,7 +58,11 @@
                this.content[0].children[0][2].value = lat;
                this.content[0].children[0][3].value = lng;
                this.content[0].children[0][4].value = user;
-              }
+             },
+             beforeClose: function() {
+              comment = this.content[0].children[0][5].value;
+              severity = this.content[0].children[0][6].value;
+            }
            }
        });
      }
