@@ -25,7 +25,8 @@
     <% if logged_in? %>
       confirmMarker(event.latLng.lat(), event.latLng.lng(), <%=current_user.id %>);
       document.getElementsByClassName('mfp-close')[0].onclick = function() {
-          createMarker(event.latLng.lat(), event.latLng.lng());
+        var text = "<h4> marked by: @<%= current_user.username %> </h4></br> info will load on refresh" ;
+          createMarker(event.latLng.lat(), event.latLng.lng(), text);
         };
 
     <% else %>
@@ -35,11 +36,11 @@
 
 
 
-  function createMarker(lat, lng){
+  function createMarker(lat, lng, text){
     var marker = handler.addMarker({
       lat: lat,
       lng: lng,
-      infowindow: "Hello"
+      infowindow: text
     }, {animation: google.maps.Animation.DROP});
   }
 
