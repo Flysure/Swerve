@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
 
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google', { clusterer_maxZoom: 1, clusterer_gridSize: 100});
 
   handler.buildMap({
     internal: {
@@ -69,7 +69,14 @@
 
 
   function displayOnMap(position) {
-    var marker = handler.addMarker({lat: position.coords.latitude, lng: position.coords.longitude});
+    var marker = handler.addMarker({
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+      infowindow: "Your current location"},
+      {
+        animation: google.maps.Animation.DROP
+      });
     handler.map.centerOn(marker);
+    handler.getMap().setZoom(16);
   };
   </script>
