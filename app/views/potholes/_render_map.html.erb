@@ -23,12 +23,15 @@
   function handleClickEvent(event){
 
     <% if logged_in? %>
-      confirmMarker(event.latLng.lat(), event.latLng.lng(), <%=current_user.id %>);
-      document.getElementsByClassName('mfp-close')[0].onclick = function() {
+      var lat = event.latLng.lat();
+      var lng = event.latLng.lng();
+      displayPopup(lat,lng, <%=current_user.id %>);
+      var submitButton = document.getElementsByClassName("mfp-close")[0];
+      submitButton.removeAttribute("data-disable-with");
+      submitButton.onclick = function() {
         var text = "<h4> marked by: @<%= current_user.username %> </h4></br> info will load on refresh" ;
-          createMarker(event.latLng.lat(), event.latLng.lng(), text);
+          createMarker(lat, lng, text);
         };
-
     <% else %>
       alert("Must be logged in to mark")
     <% end %>
@@ -46,7 +49,7 @@
 
 
 
-  function confirmMarker(lat, lng, user){
+  function displayPopup(lat, lng, user){
       var comment;
       var severity;
       $.magnificPopup.open({
@@ -55,17 +58,13 @@
                type: 'inline'
            },
            callbacks: {
-             change: function() {
+               change: function() {
                this.content[0].children[0][2].value = lat;
                this.content[0].children[0][3].value = lng;
                this.content[0].children[0][4].value = user;
-             },
-             beforeClose: function() {
-              comment = this.content[0].children[0][5].value;
-              severity = this.content[0].children[0][6].value;
-            }
-           }
+             }}
        });
+
      }
 
 
