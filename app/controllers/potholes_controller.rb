@@ -9,6 +9,7 @@ class PotholesController < ApplicationController
     @pothole.save
   end
   def index
+    @pothole = Pothole.new
     @potholes = Pothole.all
     @hash = Gmaps4rails.build_markers(@potholes) do |pothole, marker|
       marker.lat pothole.latitude

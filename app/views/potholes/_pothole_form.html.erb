@@ -1,4 +1,4 @@
-<%= form_for :pothole, url: potholes_path do |form| %>
+<%= form_for(@pothole) do |form| %>
 
 <h3>Mark a pothole</h3>
 <br>
@@ -8,7 +8,7 @@
 
 <p>
   <%= form.label "Comments" %><br>
-  <%= form.text_field :comment %>
+  <%= form.text_field :description %>
 </p>
 
 <p>
