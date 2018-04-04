@@ -1,6 +1,6 @@
 <h4>marked by: @<%= pothole.user.username %></h4>
 <p>on: <%= pothole.created_at.localtime.strftime("%B %e, %Y") %></p>
-<p>address: <%= pothole.location %></p>
+
 <p>comments: <%= pothole.description %></p>
 <p>severity: <%= pothole.severity %></p>
 <%= link_to 'more info', pothole_path(pothole.id) %>
