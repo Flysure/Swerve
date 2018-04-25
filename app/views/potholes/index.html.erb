@@ -1,11 +1,25 @@
+<div id = "infoDiv" style = 'float: left; width: 25%; height: 500px; background-color: lightblue'>
 
-  <div id="map" style='width: 100%; height: 600px;'></div>
-  
+  <h4>Potholes in your area:</h4>
+  <table>
+    <tr>
+      <td>334 brikshire rd</td>
+    </tr>
+  </table>
+
+</div>
+
+<div id= "mapDiv" style = 'float: right; width: 75%' >
+
+
+  <div id="map" style='height: 500px; '>
+
+
+  </div>
+  <h4>Potholes that users have marked within ___ miles. Click <a href="#">here</a> for help</h4>
+</div>
   <div id="pothole-form" class="white-popup mfp-hide">
-
-
   <%= render 'pothole_form'  %>
-
   </div>
 
   <%= render 'render_map' %>
