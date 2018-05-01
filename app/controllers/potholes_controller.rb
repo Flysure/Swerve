@@ -30,8 +30,8 @@ class PotholesController < ApplicationController
   end
 end
 def bounds
-  puts("HELLLLLOOOOOO");
-  @coords = Geocoder.coordinates(params[:Location]);
-  puts(@coords[0]);
+  coords = Geocoder.coordinates(params[:location]);
+  @lat = coords[0];
+  @lng = coords[1];
 end
 end
