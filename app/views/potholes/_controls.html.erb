@@ -1,6 +1,11 @@
 <div id="bottom">
-  <hr>
-  <p id="plus">+</p>
-  <p id="minus">-</p>
+  <div id= "search">
+  <%= form_tag('/bounds') do  %>
 
+    <%=search_field_tag 'name','Enter location here', size: 50%>
+    &nbsp
+    <%= submit_tag 'Relocate' %>
+
+ <% end %>
+  </div>
 </div>
