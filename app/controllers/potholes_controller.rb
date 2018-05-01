@@ -22,9 +22,10 @@ class PotholesController < ApplicationController
   end
   def locate
   if !params[:coords][:lat].nil?
-    lat = params[:coords][:lat];
-    lng = params[:coords][:lng];
-    @holes = Pothole.near([lat, lng], 50);
+    @lat = params[:coords][:lat];
+    @lng = params[:coords][:lng];
+    @holes = Pothole.near([@lat, @lng], 25);
+
   end
 end
 end

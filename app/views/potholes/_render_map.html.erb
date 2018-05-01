@@ -86,10 +86,7 @@
     $.ajax({
       type: "POST",
       url: "http://localhost:3000/locate",
-      data: { coords: { lat:position.coords.latitude , lng:position.coords.longitude  } },
-      success(data){
-        $('#list_div').html("<%= escape_javascript (render partial: 'list_local') %>");
-      }
+      data: { coords: { lat:position.coords.latitude , lng:position.coords.longitude  } }
     });
   };
   </script>
