@@ -25,8 +25,13 @@ class PotholesController < ApplicationController
   if !params[:coords][:lat].nil?
     @lat = params[:coords][:lat];
     @lng = params[:coords][:lng];
-    @distance = 25
+    @distance = 25;
     @holes = Pothole.near([@lat, @lng], @distance);
   end
+end
+def bounds
+  puts("HELLLLLOOOOOO");
+  @coords = Geocoder.coordinates(params[:Location]);
+  puts(@coords[0]);
 end
 end

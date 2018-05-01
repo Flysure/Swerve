@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :users
   resources :potholes
   post '/locate', to: 'potholes#locate'
+  post '/bounds', to: 'potholes#bounds'
 end
