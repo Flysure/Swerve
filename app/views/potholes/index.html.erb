@@ -4,11 +4,10 @@
 
 <div id= "mapDiv" >
 
-  <div id="map" style='height: 650px; border-radius:5px; '></div>
+  <div id="map" style='height: 500px; border-radius:5px; '></div>
+    <%= render 'controls'  %>
 
-  <h4>Potholes that users have marked within <%= @distance %> miles. Click <a href="#">here</a> for help</h4>
 </div>
-
 
   <div id="pothole-form" class="white-popup mfp-hide">
   <%= render 'pothole_form'  %>

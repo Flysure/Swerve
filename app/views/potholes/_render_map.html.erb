@@ -89,4 +89,24 @@
       data: { coords: { lat:position.coords.latitude , lng:position.coords.longitude  } }
     });
   };
+
+  var plus = document.getElementById('plus');
+  plus.onclick = function(){
+    var zoomLevel = handler.getMap().getZoom();
+    zoomLevel++;
+    handler.getMap().setZoom(zoomLevel);
+  }
+
+  var minus = document.getElementById('minus');
+  minus.onclick = function(){
+    var zoomLevel = handler.getMap().getZoom();
+    zoomLevel--;
+    handler.getMap().setZoom(zoomLevel);
+  }
+
+
+
+
+
+
   </script>
