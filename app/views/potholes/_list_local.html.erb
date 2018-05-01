@@ -1,18 +1,18 @@
 <div id="infoDiv">
 
-  <% holes = Pothole.near('Columbus, OH, US')  %>
-  
   <hr>
   <h4>Potholes in your area:</h4>
   <hr>
-  <% holes.each do |pot| %>
-<p>
-  <i><%= pot.loc %></i>
-</p>
-<p>Severity:
-  <%= pot.severity %></p>
+  <% if !@holes.nil? %>
+  <% @holes.each do |pot| %>
+  <p>
+    <i><%= pot.loc %></i>
+  </p>
+  <p>Severity:
+    <%= pot.severity %></p>
 
-<hr>
-<% end %>
+  <hr>
+  <% end %>
+  <% end %>
 
 </div>

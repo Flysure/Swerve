@@ -20,4 +20,11 @@ class PotholesController < ApplicationController
   def show
     @pothole = Pothole.find(params[:id])
   end
+  def locate
+  if !params[:coords][:lat].nil?
+    lat = params[:coords][:lat];
+    lng = params[:coords][:lng];
+    @holes = Pothole.near([lat, lng], 50);
+  end
+end
 end
