@@ -1,9 +1,9 @@
 <div id="infoDiv">
+  <% if @holes.size > 0 %>
+  <hr>
+  <h4><%= @holes.size%> Potholes within <%= @distance %> miles </h4>
+  <hr>
 
-  <hr>
-  <h4>Potholes in your area:</h4>
-  <hr>
-  <% if !@holes.nil? %>
   <% @holes.each do |pot| %>
   <p>
     <i><%= pot.loc %></i>
@@ -12,7 +12,10 @@
     <%= pot.severity %></p>
 
   <hr>
+  <% end%>
+  <% else %>
+  <h4>No potholes found within <%= @distance %> miles </h4>
   <% end %>
-  <% end %>
+
 
 </div>

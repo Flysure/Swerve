@@ -9,6 +9,7 @@ class PotholesController < ApplicationController
     @pothole.save
   end
   def index
+    @distance = 25;
     @pothole = Pothole.new
     @potholes = Pothole.all
     @hash = Gmaps4rails.build_markers(@potholes) do |pothole, marker|
@@ -24,8 +25,8 @@ class PotholesController < ApplicationController
   if !params[:coords][:lat].nil?
     @lat = params[:coords][:lat];
     @lng = params[:coords][:lng];
-    @holes = Pothole.near([@lat, @lng], 25);
-
+    @distance = 25
+    @holes = Pothole.near([@lat, @lng], @distance);
   end
 end
 end
