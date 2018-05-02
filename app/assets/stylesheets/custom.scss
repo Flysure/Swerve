@@ -65,7 +65,10 @@ header{
 .gone{
   display: none;
 }
-
+.flash{
+  color: lightgreen;
+  margin: 15px;
+}
 #infoDiv{
   float: right;
   width: 24%;

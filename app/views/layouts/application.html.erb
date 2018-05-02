@@ -16,6 +16,13 @@
       <%= link_to "S w e r v e", root_path, id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% flash.each do |message_type, message| %>
+            <div class="flash">
+              <%= message %>
+            </div>
+            <% end %>
+          </li>
           <% if !logged_in? %>
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", '#' %></li>
@@ -34,13 +41,6 @@
     </div>
   </header>
   <div class="container-fluid">
-    <h3>
-      <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>">
-        <%= message %>
-      </div>
-      <% end %>
-    </h3>
     <%= yield %>
   </div>
 </body>
