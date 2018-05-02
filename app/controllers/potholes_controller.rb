@@ -1,10 +1,11 @@
 class PotholesController < ApplicationController
 
   def create
+    
     @pothole = Pothole.new(latitude:params[:pothole][:latitude],
       longitude:params[:pothole][:longitude],
       user_id:params[:pothole][:user_id],
-      description:params[:pothole][:comment],
+      description:params[:pothole][:description],
       severity:params[:pothole][:severity])
     @pothole.save
   end

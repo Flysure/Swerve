@@ -1,0 +1,6 @@
+handler.addMarker({
+  lat: <%= @pothole.latitude %>,
+  lng: <%= @pothole.longitude %>,
+  infowindow: "<%= escape_javascript render(:partial => 'potholes/infowindow', :locals => { :pothole => @pothole}) %>"
+}, {animation: google.maps.Animation.DROP
+});
