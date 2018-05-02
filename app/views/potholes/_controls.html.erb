@@ -1,5 +1,6 @@
 <div id="bottom">
-  <div id= "search">
+  <div id = "search">
+
   <%= form_tag('/bounds', remote: true) do  %>
 
     <%=search_field_tag 'location','Enter location here', size: 50%>
@@ -7,5 +8,6 @@
     <%= submit_tag 'Relocate' %>
 
  <% end %>
+
   </div>
 </div>

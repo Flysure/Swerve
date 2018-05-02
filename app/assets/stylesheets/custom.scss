@@ -83,15 +83,19 @@ h4{
 
 }
 
-#mapDiv{
+#map{
   float: left;
   width: 75%;
-
+  height: 500px;
+  border-radius:5px;
 }
 
 #bottom{
-  color: green;
+  display: inline-block;
+  margin-top: 15px;
+
   height: 135px;
+  width: 75%;
   background-color: #373737;
   border-radius:5px;
 }
@@ -102,5 +106,6 @@ h4{
   font-size: 2em;
 }
 #search{
-
+  color: black;
+  margin: 15px;
 }
