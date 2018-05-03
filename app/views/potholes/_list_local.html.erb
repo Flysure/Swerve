@@ -6,6 +6,7 @@
   <hr>
 
   <% @holes.each do |pot| %>
+  <p>Marked by <%= link_to pot.user.username, user_path(pot.user_id) %></p>
   <% if pot.loc.nil? %>
   <p><i>Unable to find address</i></p>
   <% else %>
