@@ -1,30 +1,45 @@
 <div id="infoDiv">
+<div id="infoTitle">
+
 
   <% if @holes.size > 0 %>
-  <hr>
-  <h4><%= @holes.size%> Potholes within <%= @distance %> miles </h4>
-  <hr>
 
+  <h4><%= @holes.size%>
+    Potholes within
+    <%= @distance %>
+    miles of you
+  </h4>
+  <h4>Sorted closest to farthest</h4>
+</div>
+<div id="potholeInfo">
+  <hr>
   <% @holes.each do |pot| %>
-  <p>Marked by <%= link_to pot.user.username, user_path(pot.user_id) %></p>
+
+  <p>Marked by
+    <%= link_to pot.user.username, user_path(pot.user_id) %></p>
   <% if pot.loc.nil? %>
-  <p><i>Unable to find address</i></p>
-  <% else %>
+  <p>
+    <i>Unable to find address</i>
+  </p>
+<% else %>
   <p>
     <i><%= pot.loc %></i>
   </p>
   <%end %>
   <p>Severity:
-    <%= pot.severity %> </p>
-    <p>
+    <%= pot.severity %>
+    &nbsp
       <%= link_to 'view', pothole_path(pot.id) %>
-    </p>
+  </p>
+
   <hr>
 
   <% end%>
-  <% else %>
-  <h4>No potholes found within <%= @distance %> miles </h4>
+<% else %>
+  <h4>No potholes found within
+    <%= @distance %>
+    miles
+  </h4>
   <% end %>
-
-
+</div>
 </div>

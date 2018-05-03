@@ -12,11 +12,12 @@
   </div>
   <div id="home">
 
-
   <%= form_tag('/home', remote: true) do  %>
     <%= hidden_field :coords, :latitude%>
     <%= hidden_field :coords, :longitude%>
   <%= submit_tag "Return home", class: 'btn-primary' %>
    <% end %>
+
    </div>
+
 </div>
