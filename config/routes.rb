@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :potholes
   post '/locate', to: 'potholes#locate'
   post '/bounds', to: 'potholes#bounds'
+  post '/home', to: 'potholes#home'
 end

@@ -1,7 +1,7 @@
 class PotholesController < ApplicationController
 
   def create
-    
+
     @pothole = Pothole.new(latitude:params[:pothole][:latitude],
       longitude:params[:pothole][:longitude],
       user_id:params[:pothole][:user_id],
@@ -34,5 +34,9 @@ def bounds
   coords = Geocoder.coordinates(params[:location]);
   @lat = coords[0];
   @lng = coords[1];
+end
+def home
+  @lat = params[:coords][:lat];
+  @lng = params[:coords][:lng];
 end
 end

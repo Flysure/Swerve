@@ -5,9 +5,18 @@
 
     <%=search_field_tag 'location','Enter location here', size: 50%>
     &nbsp
-    <%= submit_tag 'Relocate' %>
+    <%= submit_tag 'Relocate', class: 'btn-primary' %>
 
  <% end %>
 
   </div>
+  <div id="home">
+
+
+  <%= form_tag('/home', remote: true) do  %>
+    <%= hidden_field :coords, :latitude%>
+    <%= hidden_field :coords, :longitude%>
+  <%= submit_tag "Return home", class: 'btn-primary' %>
+   <% end %>
+   </div>
 </div>
