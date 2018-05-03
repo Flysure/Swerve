@@ -1,18 +1,25 @@
 <div id="infoDiv">
-  
+
   <% if @holes.size > 0 %>
   <hr>
   <h4><%= @holes.size%> Potholes within <%= @distance %> miles </h4>
   <hr>
 
   <% @holes.each do |pot| %>
+  <% if pot.loc.nil? %>
+  <p><i>Unable to find address</i></p>
+  <% else %>
   <p>
     <i><%= pot.loc %></i>
   </p>
+  <%end %>
   <p>Severity:
-    <%= pot.severity %></p>
-
+    <%= pot.severity %> </p>
+    <p>
+      <%= link_to 'view', pothole_path(pot.id) %>
+    </p>
   <hr>
+
   <% end%>
   <% else %>
   <h4>No potholes found within <%= @distance %> miles </h4>
