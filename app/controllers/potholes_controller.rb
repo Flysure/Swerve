@@ -36,7 +36,7 @@ def bounds
   @lng = coords[1];
 end
 def home
-  @lat = params[:coords][:lat];
-  @lng = params[:coords][:lng];
+  @lat = params[:coords][:latitude];
+  @lng = params[:coords][:longitude];
 end
 end
