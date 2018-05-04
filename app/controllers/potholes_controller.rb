@@ -1,11 +1,7 @@
 class PotholesController < ApplicationController
 
   def create
-    @pothole = Pothole.new(latitude:params[:pothole][:latitude],
-      longitude:params[:pothole][:longitude],
-      user_id:params[:pothole][:user_id],
-      description:params[:pothole][:description],
-      severity:params[:pothole][:severity])
+    @pothole = Pothole.new(potholes_params)
     @pothole.save
   end
   def index
@@ -34,4 +30,8 @@ def home
   @lat = params[:coords][:latitude];
   @lng = params[:coords][:longitude];
 end
+def potholes_params
+      params.require(:pothole).permit(:latitude, :longitude, :user_id,
+                                   :description, :severity)
+    end
 end
