@@ -32,6 +32,7 @@ def home
 end
 def potholes_params
       params.require(:pothole).permit(:latitude, :longitude, :user_id,
-                                   :description, :severity)
+                                   :description, :severity, :width, :depth,
+                                   :authorites_contacted)
     end
 end

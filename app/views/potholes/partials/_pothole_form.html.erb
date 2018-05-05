@@ -12,15 +12,29 @@
   <%= form.number_field :longitude,class: "gone", step: :any%>
   </p>
 
+
+<p>
+  <%= form.label "Severity*" %><br>
+  <%= form.select :severity, (1..10) %>
+</p>
+<p>
+  <%= form.label "Depth*" %><br>
+  <%= form.select :depth, (1..5) %>
+</p>
+<p>
+  <%= form.label "Width*" %><br>
+  <%= form.select :width, (1..5) %>
+</p>
+<p>
+  <%= form.label "Authorities contacted?*" %><br>
+  <%= form.check_box :authorites_contacted %>
+</p>
 <p>
   <%= form.label "Comments" %><br>
   <%= form.text_field :description %>
 </p>
 
-<p>
-  <%= form.label "Severity" %><br>
-  <%= form.select :severity, (1..10) %>
-</p>
+
 
 <%= form.submit "Submit", class: "mfp-close" %>
 

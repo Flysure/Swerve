@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409041436) do
+ActiveRecord::Schema.define(version: 20180505163658) do
 
   create_table "potholes", force: :cascade do |t|
     t.float "latitude"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20180409041436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "loc"
+    t.integer "depth"
+    t.integer "width"
+    t.boolean "authorites_contacted"
     t.index ["user_id", "created_at"], name: "index_potholes_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_potholes_on_user_id"
   end
