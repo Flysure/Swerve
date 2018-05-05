@@ -2,7 +2,7 @@
 
 
 <h4>pothole initially marked by: @<%= @pothole.user.username %></h4>
-<p>marked at: <%= @pothole.created_at.localtime %></p>
+<p>marked at: <%= @pothole.created_at.localtime.strftime("%B %e, %Y") %></p>
 <p>at exact location: <%= @pothole.latitude.round(3) %>, <%= @pothole.longitude.round(3) %></p>
 <p>address: <%= @pothole.loc %></p>
 <p>comments: <%= @pothole.description %></p>

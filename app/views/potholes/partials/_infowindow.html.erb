@@ -1,6 +1,24 @@
-<h4>marked by: @<%= pothole.user.username %></h4>
-<p>on: <%= pothole.created_at.localtime.strftime("%B %e, %Y") %></p>
-<p>address: <%= pothole.loc %></p>
-<p>comments: <%= pothole.description %></p>
+
+
+<% if pothole.loc.nil? %>
+<p>
+  <i>Unable to find address</i>
+</p>
+<% else %>
+<p>
+  <i><%= pothole.loc %></i>
+</p>
+<%end %>
 <p>severity: <%= pothole.severity %></p>
+<p>depth: <%= pothole.depth %>ft width:<%= pothole.width %>ft </p>
+<% if pothole.description == "" %>
+<p>
+  <i>No description provided</i>
+</p>
+<% else %>
+<p>
+  <i><%= pothole.description %></i>
+</p>
+<%end %>
+
 <%= link_to 'more info', pothole_path(pothole.id) %>
