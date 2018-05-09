@@ -1,1 +1,3 @@
-handler.addMarkers(<%=raw @hash.to_json %>);
+marks = handler.addMarkers(<%=raw @hash.to_json %>);
+handler.bounds.extendWith(marks);
+handler.fitMapToBounds();
