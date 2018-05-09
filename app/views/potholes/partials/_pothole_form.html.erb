@@ -15,19 +15,19 @@
 
 <p>
   <%= form.label "Depth (Choose which is closest)*" %><br>
-  <%= form.select :depth, options_for_select(@width_options), {:include_blank => 'Not specified'} %>
+  <%= form.select :depth, options_for_select(Pothole::WIDTH), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Width (Choose which is closest)*" %><br>
-  <%= form.select :width, options_for_select(@width_options), {:include_blank => 'Not specified'} %>
+  <%= form.select :width, options_for_select(Pothole::WIDTH), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Severity*" %><br>
-  <%= form.select :severity, options_for_select(@severity_options), {:include_blank => 'Not specified'} %>
+  <%= form.select :severity, options_for_select(Pothole::SEVERITY), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Authorities contacted?*" %><br>
-  <%= form.select :authorites_contacted,options_for_select(@autho_options), {:include_blank => 'Not specified'} %>
+  <%= form.select :authorites_contacted,options_for_select(Pothole::AUTHO), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Comments" %><br>
