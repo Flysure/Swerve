@@ -17,7 +17,7 @@
       navigator.geolocation.getCurrentPosition(displayOnMap);
     }
 
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    
     google.maps.event.addListener(handler.getMap(), 'click', function (event) {
       handleClickEvent(event);
     });

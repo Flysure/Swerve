@@ -4,22 +4,35 @@ class PotholesController < ApplicationController
     @pothole = Pothole.new(potholes_params)
     @pothole.save
   end
+  def gmaps4rails_infowindow(pothole)
+
+
+        "<i> #{pothole.loc}
+
+      <p>severity: #{ pothole.severity}</p>
+      <p>depth: #{pothole.depth}ft width:#{ pothole.width}ft </p>
+
+        <i>#{pothole.description}</i>
+"
+
+    end
   def index
     @distance = 25;
     @pothole = Pothole.new
-    @potholes = Pothole.all
-    dropMarkers
   end
   def show
     @pothole = Pothole.find(params[:id])
   end
   def locate
-  if !params[:coords][:lat].nil?
     @lat = params[:coords][:lat];
     @lng = params[:coords][:lng];
     @distance = 25;
     @holes = Pothole.near([@lat, @lng], @distance);
-  end
+    @hash = Gmaps4rails.build_markers(@holes) do |pothole, marker|
+      marker.lat pothole.latitude
+      marker.lng pothole.longitude
+      marker.infowindow gmaps4rails_infowindow(pothole)
+    end
 end
 def bounds
   coords = Geocoder.coordinates(params[:location]);
