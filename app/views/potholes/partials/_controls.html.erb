@@ -3,7 +3,7 @@
 
   <%= form_tag('/bounds', remote: true) do  %>
 
-    <%=search_field_tag 'location','Enter location here', size: 50%>
+    <%=text_field_tag 'location','', {size: 50, placeholder: "Enter location to relocate to"}%>
     &nbsp
     <%= submit_tag 'Relocate', class: 'btn-primary' %>
 
@@ -13,8 +13,6 @@
   <div id="home">
 
   <%= form_tag('/home', remote: true) do  %>
-    <%= hidden_field :coords, :latitude%>
-    <%= hidden_field :coords, :longitude%>
   <%= submit_tag "Return home", class: 'btn-primary' %>
    <% end %>
 

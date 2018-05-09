@@ -15,15 +15,15 @@
 
 <p>
   <%= form.label "Severity*" %><br>
-  <%= form.select :severity, (1..10) %>
+  <%= form.select :severity, (1..10), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Depth*" %><br>
-  <%= form.select :depth, (1..5) %>
+  <%= form.select :depth, (1..5), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Width*" %><br>
-  <%= form.select :width, (1..5) %>
+  <%= form.select :width, (1..5), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Authorities contacted?*" %><br>

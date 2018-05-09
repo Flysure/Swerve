@@ -6,9 +6,8 @@
 
   <h4><%= @holes.size%>
     Potholes within
-    <%= form_tag '/change_distance', :format => :js, :remote => true do  %>
-    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= select_tag :distance, options_for_select((10..50).step(5)), { onchange: 'javascript: $( this ).trigger("submit.rails")' } %>
+    <%= form_tag '/change_distance', :remote => true do  %>
+    <%= select_tag :distance, options_for_select((10..50).step(5)), { include_blank: @distance, onchange: 'javascript: $( this ).trigger("submit.rails")' } %>
     <% end %>
     miles of you
   </h4>

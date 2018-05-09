@@ -64,15 +64,8 @@
       });
     google.maps.event.trigger(marker.getServiceObject(), 'click')
     locate(position);
-    homeButton(position);
     handler.map.centerOn(marker);
-    handler.getMap().setZoom(16);
   };
-
-  function homeButton(position){
-    document.getElementById('home').children[0].children[1].value = position.coords.latitude ;
-    document.getElementById('home').children[0].children[2].value = position.coords.longitude ;
-  }
 
   function locate(position){
     $.ajax({
