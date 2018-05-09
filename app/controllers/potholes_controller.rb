@@ -4,18 +4,7 @@ class PotholesController < ApplicationController
     @pothole = Pothole.new(potholes_params)
     @pothole.save
   end
-  def gmaps4rails_infowindow(pothole)
 
-
-        "<i> #{pothole.loc}
-
-      <p>severity: #{ pothole.severity}</p>
-      <p>depth: #{pothole.depth}ft width:#{ pothole.width}ft </p>
-
-        <i>#{pothole.description}</i>
-"
-
-    end
   def index
     @distance = 25;
     @pothole = Pothole.new
