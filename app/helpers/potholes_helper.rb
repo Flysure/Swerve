@@ -13,4 +13,6 @@ module PotholesHelper
       marker.infowindow gmaps4rails_infowindow(pothole)
     end
   end
+
+
 end

@@ -14,20 +14,20 @@
 
 
 <p>
+  <%= form.label "Depth (Choose which is closest)*" %><br>
+  <%= form.select :depth, options_for_select(@width_options), {:include_blank => 'Not specified'} %>
+</p>
+<p>
+  <%= form.label "Width (Choose which is closest)*" %><br>
+  <%= form.select :width, options_for_select(@width_options), {:include_blank => 'Not specified'} %>
+</p>
+<p>
   <%= form.label "Severity*" %><br>
-  <%= form.select :severity, (1..10), {:include_blank => 'Not specified'} %>
-</p>
-<p>
-  <%= form.label "Depth*" %><br>
-  <%= form.select :depth, (1..5), {:include_blank => 'Not specified'} %>
-</p>
-<p>
-  <%= form.label "Width*" %><br>
-  <%= form.select :width, (1..5), {:include_blank => 'Not specified'} %>
+  <%= form.select :severity, options_for_select(@severity_options), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Authorities contacted?*" %><br>
-  <%= form.check_box :authorites_contacted %>
+  <%= form.select :authorites_contacted,options_for_select(@autho_options), {:include_blank => 'Not specified'} %>
 </p>
 <p>
   <%= form.label "Comments" %><br>
