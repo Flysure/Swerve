@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post '/locate', to: 'potholes#locate'
   post '/bounds', to: 'potholes#bounds'
   post '/home', to: 'potholes#home'
+  post '/change_distance', to: 'potholes#change_distance'
 end
