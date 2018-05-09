@@ -1,0 +1,22 @@
+<% if pothole.loc.nil? %>
+<p>
+  <i>Unable to find address</i>	
+</p>
+<% else %>
+<p>
+  <i><%= pothole.loc %></i>
+</p>
+<%end %>
+<p>severity: <%= pothole.severity %></p>
+<p>depth: <%= pothole.depth %>ft width:<%= pothole.width %>ft </p>
+<% if pothole.description == "" %>
+<p>
+  <i>No description provided</i>
+</p>
+<% else %>
+<p>
+  <i><%= pothole.description %></i>
+</p>
+<%end %>
+
+<%= link_to 'more info', pothole_path(pothole.id) %>
