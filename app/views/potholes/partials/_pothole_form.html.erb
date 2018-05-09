@@ -2,16 +2,16 @@
 
 <h3>Mark a pothole</h3>
 
+<%-# These form fields are set with javascipt in render_map. gone is in custom.scss -%>
 <p>
-<%= form.number_field :user_id,class: "gone"%>
+  <%= form.number_field :user_id,class: "gone"%>
 </p>
 <p>
   <%= form.number_field :latitude,class: "gone", step: :any%>
-  </p>
-  <p>
+</p>
+<p>
   <%= form.number_field :longitude,class: "gone", step: :any%>
-  </p>
-
+</p>
 
 <p>
   <%= form.label "Depth (Choose which is closest)*" %><br>
@@ -33,8 +33,6 @@
   <%= form.label "Comments" %><br>
   <%= form.text_field :description %>
 </p>
-
-
 
 <%= form.submit "Submit", class: "mfp-close" %>
 
