@@ -17,11 +17,7 @@ class PotholesController < ApplicationController
     @lng = params[:coords][:lng];
     @distance = 25;
     @holes = Pothole.near([@lat, @lng], @distance);
-    @hash = Gmaps4rails.build_markers(@holes) do |pothole, marker|
-      marker.lat pothole.latitude
-      marker.lng pothole.longitude
-      marker.infowindow gmaps4rails_infowindow(pothole)
-    end
+    build_markers
 end
 def bounds
   coords = Geocoder.coordinates(params[:location]);
