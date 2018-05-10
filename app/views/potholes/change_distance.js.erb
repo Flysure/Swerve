@@ -1,5 +1,17 @@
-alert("bigger");
+var beforeMarkers = markers;
+var beforeDist = <%= @before_dist %>
+var afterDist = <%= @distance %>
 markers = handler.addMarkers(<%=raw @hash.to_json %>);
-handler.bounds.extendWith(markers);
-handler.fitMapToBounds();
+
+if( afterDist > beforeDist ){
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+}
+else{
+  for(var i=markers.length; i< beforeMarkers.length;i++){
+    beforeMarkers[i].setMap(null);
+  }
+}
+
+<% session[:distance] = @distance %>
 $('#list_div').html("<%= j render(partial: 'potholes/partials/list_local') %>");
