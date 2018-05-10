@@ -18,6 +18,7 @@ class PotholesController < ApplicationController
     session[:lat] = params[:coords][:lat]
     session[:lng] = params[:coords][:lng]
     @distance = 10;
+    session[:distance] = @distance
     @holes = Pothole.near([session[:lat], session[:lng]], @distance);
     build_markers
 end
@@ -34,9 +35,17 @@ def home
 end
 # Drops markers according to distance, see js.erb file
 def change_distance
+    @before_dist = session[:distance];
     @distance = params[:distance];
     @holes = Pothole.near([session[:lat], session[:lng]], @distance);
     build_markers
+    respond_to  do |format|
+      format.js {
+        if (@distance.to_i < @before_dist.to_i)
+          render js: "change_distance.js.erb";
+        end
+      }
+    end
 end
 def potholes_params
       params.require(:pothole).permit(:latitude, :longitude, :user_id,
