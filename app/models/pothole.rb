@@ -29,6 +29,6 @@ class Pothole < ApplicationRecord
 
 
 SORTING = [
-          ["Closest to farthest", "asc"],
-          ["Severity", "sev"]]
+          ["Closest to farthest", "distance"],
+          ["Severity", "severity"]]
 end
