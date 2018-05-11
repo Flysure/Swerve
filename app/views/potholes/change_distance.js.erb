@@ -2,16 +2,20 @@ var beforeMarkers = markers;
 var beforeDist = <%= @before_dist %>
 var afterDist = <%= @distance %>
 markers = handler.addMarkers(<%=raw @hash.to_json %>);
-
+console.log(markers)
 if( afterDist > beforeDist ){
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 }
 else{
-  for(var i=markers.length; i< beforeMarkers.length;i++){
-    beforeMarkers[i].setMap(null);
+  for(var i = markers.length; i < beforeMarkers.length; i++){
+    beforeMarkers[i].getServiceObject().setVisible(false);
   }
+  handler.resetBounds();
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
 }
 
 <% session[:distance] = @distance %>
+
 $('#list_div').html("<%= j render(partial: 'potholes/partials/list_local') %>");
