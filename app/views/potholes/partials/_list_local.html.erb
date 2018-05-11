@@ -4,16 +4,15 @@
 
   <% if @holes.size > 0 %>
 
-  <h4><%= @holes.size%>
-    Potholes within
+    <div class="forms">
     <%= form_tag '/change_distance', :remote => true do  %>
     <%= select_tag :distance, options_for_select((10..50).step(5), session[:distance]), { onchange: 'javascript: $( this ).trigger("submit.rails")' } %>
     <% end %>
-    miles of you
-  </h4>
-  <h4>Sorted <%= form_tag '/change_sorting', :remote => true do  %>
-  <%= select_tag :sorting, options_for_select(Pothole::SORTING, session[:sorting]), { onchange: 'javascript: $( this ).trigger("submit.rails")' } %>
-  <% end %></h4>
+    </div>
+    <div class="forms">
+    <%= form_tag '/change_sorting', :remote => true do  %>
+    <%= select_tag :sorting, options_for_select(Pothole::SORTING, session[:sorting]), { onchange: 'javascript: $( this ).trigger("submit.rails")' } %>
+  <% end %>
 </div>
 <div id="potholeInfo">
   <hr>
