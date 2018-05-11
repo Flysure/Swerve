@@ -11,7 +11,9 @@
     <% end %>
     miles of you
   </h4>
-  <h4>Sorted closest to farthest</h4>
+  <h4>Sorted <%= form_tag '/change_sorting', :remote => true do  %>
+  <%= select_tag :sorting, options_for_select(Pothole::SORTING, @sort), { onchange: 'javascript: $( this ).trigger("submit.rails")' } %>
+  <% end %></h4>
 </div>
 <div id="potholeInfo">
   <hr>

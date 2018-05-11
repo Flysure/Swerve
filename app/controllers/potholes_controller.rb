@@ -15,8 +15,10 @@ class PotholesController < ApplicationController
   end
   # Retrieves user location from ajax, drops markers, see locate.js.erb
   def locate
+    session[:sorting] = "asc"
     session[:lat] = params[:coords][:lat]
     session[:lng] = params[:coords][:lng]
+    @sorting = "asc"
     @distance = 10;
     session[:distance] = @distance
     @holes = Pothole.near([session[:lat], session[:lng]], @distance);
@@ -39,6 +41,16 @@ def change_distance
     @distance = params[:distance];
     @holes = Pothole.near([session[:lat], session[:lng]], @distance);
     build_markers
+end
+def change_sorting
+  @sort = params[:sorting]
+  @distance = session[:distance];
+  if(@sort == "sev")
+    @holes = Pothole.near([session[:lat], session[:lng]], @distance, :order => :severity);
+  elsif(@sort == "asc")
+    @holes = Pothole.near([session[:lat], session[:lng]], @distance);
+  end
+
 end
 def potholes_params
       params.require(:pothole).permit(:latitude, :longitude, :user_id,

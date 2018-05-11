@@ -26,4 +26,9 @@ class Pothole < ApplicationRecord
 ["8 - Physical activity severely limited.",8],
 ["9 - Unable to speak - pain makes you pass out",9],
 ["10 - Unconscious. Pain makes you pass out.",10]]
+
+
+SORTING = [
+          ["Closest to farthest", "asc"],
+          ["Severity", "sev"]]
 end
