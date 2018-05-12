@@ -8,14 +8,11 @@ if( afterDist > beforeDist ){
   handler.fitMapToBounds();
 }
 else{
-  for(var i = markers.length; i < beforeMarkers.length; i++){
-    beforeMarkers[i].getServiceObject().setVisible(false);
-  }
   handler.resetBounds();
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 }
-
+// Setting global variable to chosen distance
 <% session[:distance] = @distance %>
 
 $('#list_div').html("<%= j render(partial: 'potholes/partials/list_local') %>");
