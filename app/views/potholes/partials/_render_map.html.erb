@@ -1,7 +1,12 @@
 <script type="text/javascript">
 
 
-  handler = Gmaps.build('Google');
+  handler = Gmaps.build('Google',{
+  markers: {
+    clusterer: {
+      maxZoom:  11,
+      gridSize: 15
+    }}});
 
   var mapOptions = { mapTypeId: google.maps.MapTypeId.HYBRID };
 
